@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Métricas de compras</title>
+  <link rel="stylesheet" href="../panel/panel.css">
+  <link rel="stylesheet" href="metricas.css">
+</head>
+<body class="pagina">
+  <header class="cabecera">
+    <div>
+      <h1>Métricas de compras</h1>
+      <p class="muted" id="subtitulo"></p>
+    </div>
+    <div class="periodos" role="group" aria-label="Período">
+      <button data-periodo="6m">6 meses</button>
+      <button data-periodo="1a">1 año</button>
+      <button data-periodo="todo">Todo</button>
+    </div>
+  </header>
+  <main id="contenido"></main>
+  <script type="module" src="metricas.js"></script>
+</body>
+</html>

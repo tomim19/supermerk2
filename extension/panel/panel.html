@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compras Carrefour</title>
+  <link rel="stylesheet" href="panel.css">
+</head>
+<body>
+  <nav class="tabs">
+    <button data-vista="pedido" class="activa">Pedido</button>
+    <button data-vista="config">Configuración</button>
+    <button id="abrir-metricas" class="externo" title="Abre las métricas en una pestaña nueva">Métricas ↗</button>
+  </nav>
+
+  <main id="pedido" class="vista">
+    <section id="estado" class="estado"></section>
+    <section id="decision" class="decision" hidden></section>
+    <div id="listas"></div>
+  </main>
+
+  <main id="config" class="vista" hidden></main>
+
+  <section id="buscador" class="buscador" hidden>
+    <header><strong id="buscador-titulo">Buscar producto</strong><button class="link" id="buscador-cerrar">Cerrar</button></header>
+    <form id="buscador-form"><input id="buscador-texto" type="search" placeholder="Marca y producto" autocomplete="off"><button>Buscar</button></form>
+    <ul id="buscador-res" class="items"></ul>
+  </section>
+
+  <section id="intro" class="intro" hidden></section>
+
+  <footer id="pie" class="pie" hidden>
+    <div class="total"><span>Total estimado</span><strong id="total">$0</strong><small id="ahorro"></small><button id="todos" class="link">Deseleccionar todos</button></div>
+    <div class="acciones">
+      <select id="modo" title="Cómo cargar el carrito">
+        <option value="agregar">Agregar al carrito</option>
+        <option value="reemplazar">Reemplazar el carrito</option>
+      </select>
+      <button id="cargar" class="primario">Cargar</button>
+    </div>
+    <div id="resultado" class="resultado" hidden></div>
+  </footer>
+
+  <script type="module" src="panel.js"></script>
+</body>
+</html>

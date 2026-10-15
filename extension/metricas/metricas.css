@@ -1,0 +1,66 @@
+/* Página de métricas: usa los tokens de panel.css y suma los del gráfico. */
+:root { --serie: #1a56c4; --tinta-suave: #8792a2; }
+@media (prefers-color-scheme: dark) {
+  :root { --serie: #5b8de6; --tinta-suave: #6b7480; }
+}
+
+body.pagina { padding: 24px 32px 48px; max-width: 1180px; margin: 0 auto; }
+.cabecera { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+.cabecera h1 { margin: 0 0 4px; font-size: 24px; }
+.cabecera p { margin: 0; }
+
+.periodos { display: inline-flex; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 3px; gap: 2px; }
+.periodos button { border: 0; background: none; padding: 6px 12px; color: var(--muted); border-radius: 7px; }
+.periodos button.activo { background: var(--accent); color: var(--accent-text); font-weight: 600; }
+
+#contenido { display: grid; gap: 16px; }
+
+.indicadores { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+.indicador { background: var(--card); border-radius: 12px; padding: 14px 16px; display: grid; gap: 2px; }
+.indicador strong { font-size: 22px; font-variant-numeric: tabular-nums; }
+.indicador span { color: var(--text); }
+.indicador small { color: var(--muted); }
+
+.tarjeta { background: var(--card); border-radius: 12px; padding: 16px; display: grid; gap: 10px; }
+.tarjeta > header { display: flex; justify-content: space-between; align-items: center; }
+.tarjeta h2 { margin: 0; font-size: 15px; }
+.nota { margin: 0; font-size: 13px; }
+
+/* gráfico */
+.grafico { position: relative; }
+.grafico svg { display: block; overflow: visible; }
+.grafico .grilla { stroke: var(--line); stroke-width: 1; }
+.grafico .base { stroke: var(--tinta-suave); stroke-width: 1; }
+.grafico .eje { fill: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.grafico .serie { fill: var(--serie); }
+.grafico .serie.activa { opacity: .75; }
+.grafico .linea { fill: none; stroke: var(--serie); stroke-width: 2; stroke-linejoin: round; }
+.grafico .punto { fill: var(--serie); stroke: var(--card); stroke-width: 2; }
+.grafico .punto.activa { r: 6; }
+.grafico .guia { stroke: var(--tinta-suave); stroke-width: 1; stroke-dasharray: 3 3; }
+.tip { position: absolute; pointer-events: none; background: var(--text); color: var(--bg); border-radius: 8px; padding: 6px 10px; font-size: 12px; white-space: nowrap; box-shadow: 0 4px 14px rgb(0 0 0 / .2); display: grid; gap: 1px; }
+
+/* ranking */
+.ranking { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.ranking li { display: grid; grid-template-columns: minmax(0, 2fr) minmax(80px, 3fr) auto; gap: 12px; align-items: center; }
+.ranking-nombre { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ranking-nombre small { margin-left: 6px; color: var(--muted); }
+.ranking-barra { height: 10px; }
+.ranking-barra span { display: block; height: 100%; background: var(--serie); border-radius: 0 4px 4px 0; }
+.ranking-valor { font-variant-numeric: tabular-nums; text-align: right; min-width: 90px; }
+
+/* tabla */
+.tabla-scroll { overflow-x: auto; }
+.tabla { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.tabla th, .tabla td { padding: 6px 10px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+.tabla th:first-child, .tabla td:first-child { text-align: left; }
+.tabla th { color: var(--muted); font-weight: 500; }
+
+.vacio-grande { background: var(--card); border-radius: 12px; padding: 32px; text-align: center; display: grid; gap: 8px; justify-items: center; }
+.vacio-grande p { margin: 0; }
+
+@media (max-width: 600px) {
+  body.pagina { padding: 16px; }
+  .ranking li { grid-template-columns: minmax(0, 1fr) auto; }
+  .ranking-barra { display: none; }
+}
